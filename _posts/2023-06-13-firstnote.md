@@ -1,8 +1,8 @@
 ---
 title: First Note
 tags: [Test, Notes]
-style: fill
-color: primary
+style: default
+color: purple
 description: Testing the description
 ---
 
