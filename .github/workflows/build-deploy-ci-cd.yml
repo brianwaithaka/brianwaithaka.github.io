@@ -6,7 +6,7 @@ on:
       - master  
 
 jobs:
-  build_site_and_commit:
+  build_and_publish_site:
     runs-on: ubuntu-latest
     steps:
       - name: Check recent updates from repository
@@ -30,8 +30,7 @@ jobs:
         run: |
           bundle exec jekyll build
 
-
-      - name: Backup site to branch
+      - name: Publish site to branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -41,12 +40,13 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
+
   deploy_site:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build_site_and_commit
+    needs: build_and_publish_site
     permissions:
       pages: write 
       id-token: write
