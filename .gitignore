@@ -5,7 +5,9 @@
 *.psd
 *.ai
 
-# IntelliJ
+#IDE Configs
+.vscode
 .idea
 
-.vscode
+#Local Site Build Files
+_site
