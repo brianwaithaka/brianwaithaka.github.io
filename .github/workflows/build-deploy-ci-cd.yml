@@ -37,9 +37,6 @@ jobs:
           publish_dir: ./_site
           publish_branch: gh-pages
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-
 
   deploy_site:
     environment:
