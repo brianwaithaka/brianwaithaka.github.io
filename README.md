@@ -1,11 +1,8 @@
-<div align="center">
-  <h1>portfolYOU</h1>
-  <i>A beautiful portfolio Jekyll theme that works with GitHub Pages.</i>
+## Waithaka's Notes
 
-  <a href="https://YoussefRaafatNasry.github.io/portfolYOU/">Live Demo</a>
-  •
-  <a href="https://YoussefRaafatNasry.github.io/portfolYOU/docs/">Documentation</a>
+Hi, I am Brian and this is my notes webpage  based on [theme template](https://YoussefRaafatNasry.github.io/portfolYOU).
 
-  <a href="https://YoussefRaafatNasry.github.io/portfolYOU"><img src="screenshot.gif"></a>
-  <sub><sup>© 2019 portfolYOU, licensed under the <a href="./LICENSE">MIT License</a>.</sup></sub>
-</div>
+The website applies a Jekyll theme for static site generation running using Ruby on Rails.
+
+## License
+[MIT License](https://github.com/brianwaithaka/master/LICENSE)
