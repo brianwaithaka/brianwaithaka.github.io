@@ -5,7 +5,7 @@ description         : >-
                       Creating notes to help myself and others
                       Opinions are my own
 baseurl             : ""                    
-repository          : brianwaithaka/waithaka.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
+repository          : brianwaithaka/brianwaithaka.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : YoussefRaafatNasry/portfolYOU
 open_new_tab        : false                                # Opens external URLs in new tab (works for posts, projects and navbar only)
 
