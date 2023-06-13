@@ -12,3 +12,5 @@
 #Local Site Build Files
 _site
 _site/
+
+.DS_Store

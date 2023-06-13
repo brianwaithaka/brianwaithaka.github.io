@@ -2,3 +2,48 @@
 ---
 @import "portfolYOU";
 
+// Navbar link colors in dark mode
+[data-theme="dark"] .navbar-themed .navbar-nav .nav-link {
+    color: rgb(255, 255, 255) ; 
+}
+
+// Navbrand link colors in dark mode
+[data-theme="dark"] .navbar-brand   {
+    color: rgb(255, 255, 255) ; 
+}
+
+// Navbar link colors in light mode
+[data-theme="light"] .navbar-themed .navbar-nav .nav-link {
+    color: #181253 !important; 
+}
+
+// Navbrand link colors in light mode
+[data-theme="light"] .navbar-brand   {
+    color: #181253 !important; 
+}
+
+// Hover on navbar in dark mode
+link-after,[data-theme="light"]  .nav-link::after, [data-theme="light"] .navbar-brand::after, [data-theme="light"]  .nav-item.active::after {
+    content: "";
+    background: #181253 ;
+}
+
+// Hover on navbar in light mode
+ link-after, [data-theme="dark"] .nav-link::after, [data-theme="dark"] .navbar-brand::after, [data-theme="dark"]  .nav-item.active::after {
+    content: "";
+    background: #ffffff ;
+}
+
+
+
+#theme-toggler {
+    @include themed(
+        content, 
+        url('/assets/moon.svg') , 
+        url('/assets/sun.svg')  
+        );
+        width: 35px;
+        height: 35px;
+        align-self: center;
+  }
+
