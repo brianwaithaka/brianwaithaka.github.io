@@ -9,29 +9,35 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Recent Updates in Repo
+      - name: Check recent updates from repository
         uses: actions/checkout@v3
 
       - name: Check/Store Cached Dependencies
         uses: actions/cache@v3
-          with:
-            path: vendor/bundle
-            key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-gems-
-
-      - name: Deploy Site to Github Pages
-        uses: jeffreytse/jekyll-deploy-action@v0.4.0
         with:
-          provider: 'github'
-          token: ${{ secrets.GITHUB_TOKEN }} # It's your Personal Access Token(PAT)
-          repository: ''             # Default is current repository
-          branch: 'gh-pages'         # Default is gh-pages for github provider
-          jekyll_src: './'           # Default is root directory
-          jekyll_cfg: '_config.yml'
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
-          uses: peaceiris/actions-gh-pages@v3
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: ./_site
-            publish_branch: gh-pages
+      - name: Set Up Ruby v3.0.0
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0 
+          bundler-cache: true
+      
+      - name: Install dependencies & set permissions
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec jekyll build
+          chmod a+x bin/*
+          git commit -am "add execute permision to bin/deploy"
+
+      - name: Deploy site to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
