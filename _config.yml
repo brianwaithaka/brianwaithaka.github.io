@@ -16,6 +16,7 @@ plugins:
   - jemoji
 
 
+
 ### Navbar Settings ###
 nav_exclude:                                            
   - pages/tags.html
