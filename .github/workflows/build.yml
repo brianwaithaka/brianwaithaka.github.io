@@ -1,0 +1,38 @@
+name: CI - Staging
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+jobs:
+  build_site:
+    environment: staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check recent updates from repository
+        uses: actions/checkout@v3
+
+      - name: Check/Store Cached Dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Set Up Ruby v3.0.0
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0 
+          bundler-cache: true
+      
+      - name: Install dependencies & set permissions
+        run: |
+          bundle exec jekyll build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+
+
