@@ -77,7 +77,7 @@
 
 <p class="post-metadata text-muted">
   17 June 2023 -  
-  <b>2 mins read time</b>
+  <b>3 mins read time</b>
 
   <br>Tags: 
     
@@ -104,7 +104,10 @@ Git branch</a><a class="list-group-item list-group-item-action" href="#git-check
 Git checkout</a><a class="list-group-item list-group-item-action" href="#git-remote">
 Git remote </a><a class="list-group-item list-group-item-action" href="#git-fetch">
 Git fetch</a><a class="list-group-item list-group-item-action" href="#git-config">
-Git config</a>
+Git config</a><a class="list-group-item list-group-item-action" href="#git-rebase">
+Git rebase</a><a class="list-group-item list-group-item-action" href="#git-commit">
+Git commit</a><a class="list-group-item list-group-item-action" href="#others">
+Others</a>
 
 </div>
 
@@ -118,9 +121,21 @@ Git config</a>
 </code></pre>
 
 <h4 id="git-push">Git push</h4>
+<p>Update remote branch or repository with local changes. Omit <em>local_branch</em> to make changes to all branches with upstream connection</p>
+<pre><code class="language-git">git push origin &lt;local_branch&gt;
+</code></pre>
+
 <p>If working on a new branch created locally, you must first set upstream</p>
 
 <pre><code class="language-git">git push –-set-upstream origin &lt;new_or_old_branch&gt;
+</code></pre>
+
+<p>Update new branch name in remote repository, And then set upstream connection</p>
+<pre><code class="language-git">git push &lt;remote&gt; :&lt;old_branch_name&gt; &lt;new_branch_name&gt;
+</code></pre>
+
+<p>Remove a branch from the remote repository</p>
+<pre><code class="language-git">git push &lt;remote&gt; :&lt;branch_name&gt; 
 </code></pre>
 
 <h4 id="git-pull">Git pull</h4>
@@ -130,6 +145,7 @@ If there are merge conflicts, they must be resolved by passing various arguments
 <pre><code class="language-git">git pull origin
 </code></pre>
 
+<p>Add –rebase flag to append changes as commit ontop of local HEAD</p>
 <pre><code class="language-git">git pull origin --rebase 
 </code></pre>
 
@@ -141,15 +157,10 @@ If there are merge conflicts, they must be resolved by passing various arguments
 <pre><code class="language-git">git branch -a
 </code></pre>
 
-<p>Change the branch name with the -m flag. <strong>Note</strong>. Checkout the branch you want to rename</p>
+<p>Change the branch name with the -m flag. You should checkout the branch you want to rename</p>
 
 <pre><code class="language-git">git branch -m &lt;new_branch_name&gt;
 </code></pre>
-
-<p>Update new branch name upstream</p>
-<pre><code class="language-git">git push &lt;remote&gt; :&lt;old_branch_name&gt; &lt;new_branch_name&gt;
-</code></pre>
-<p>And then set upstream through a git push</p>
 
 <p>Delete a branch by adding -d flag and ensure you are not checked into said branch</p>
 <pre><code class="language-git">git branch -d &lt;branch&gt;
@@ -192,6 +203,40 @@ If there are merge conflicts, they must be resolved by passing various arguments
 <p>Change global settings for git locally</p>
 <pre><code class="language-git">git config --global --edit
 </code></pre>
+
+<h4 id="git-rebase">Git rebase</h4>
+<p>Begin rebase in interactive mode from the very first commit</p>
+<pre><code class="language-git">git rebase -i --root 
+</code></pre>
+
+<p>Used to navigate when checking out a commit during rebase</p>
+<pre><code class="language-git">git rebase --continue       #Proceed with changes to next commit
+git rebase --skip           #Ignore current commit and continue to next
+git rebase --abort          #Entirely stop rebase and revert to previous state
+</code></pre>
+
+<h4 id="git-commit">Git commit</h4>
+<p>Commit staged changes with a message</p>
+<pre><code class="language-git">git commit -m "Enter message here"
+</code></pre>
+
+<p>Make changes to previous commit during rebase, add –no-edit flag to skip interactive</p>
+
+<pre><code class="language-git">git commit --amend --author="User name &lt;user@domain.com&gt;" --no-edit
+git commit --amend --date="Mon Jun 12 12:05:24 2023 +0200"
+</code></pre>
+<h4 id="git-reset">Git reset</h4>
+<p>If you messed up and need to hard revert to previous point in history, run</p>
+<pre><code class="language-git">git reflog          #To get the head offset value
+git reset --hard HEAD@{5} 
+</code></pre>
+
+<h4 id="others">Others</h4>
+<pre><code class="language-git">git log --oneline
+git reflog
+git status          #Check if changes are staged and status of branches
+</code></pre>
+
 
 
 
