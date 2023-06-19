@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Azure Solutions Architect Expert">
+  <meta property="og:description" content="My short notes when studying for the Azure Solutions Expert">
+  <meta property="og:image" content="">
+
+  <title>Azure Solutions Architect Expert</title>
+  <meta name="description" content="My short notes when studying for the Azure Solutions Expert">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+  <nav class="px-5 pt-3"><nav class="navbar navbar-expand-lg navbar-themed mt-0 mb-5 mx-0">
+
+  <a class="navbar-brand" href="/"><h5><b>Waithaka's Notes</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/"></a>
+
+      <a class="nav-item nav-link " href="https://www.waithaka.me">Home</a>
+
+      <a class="nav-item nav-link " href="https://blog.waithaka.me">Blog</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav></nav>
+  <main class="flex-shrink-0 container mt-0">
+    
+    <div class="col-lg-12 mx-auto pt-0 mt-0 markdown-body">
+  <h1><b>Azure Solutions Architect Expert</b></h1>
+
+<p class="post-metadata text-muted">
+  15 June 2023 -  
+  <b>21 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#microsoft">
+      <span class="tag badge badge-pill text-primary border border-primary">Microsoft</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#azure">
+      <span class="tag badge badge-pill text-primary border border-primary">Azure</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#cheat-sheet">
+      <span class="tag badge badge-pill text-primary border border-primary">Cheat Sheet</span>
+    </a>
+    </p>
+
+<h2 id="introduction-">Introduction <!-- omit from toc --></h2>
+
+<p>Hello. Thanks for checking this out. These are my personal notes made when studying for the Azure Solutions Architect Expert certification. 
+Over time I will append links to official documentation. 
+If something does not look right, <a href="mailto:brian@waithaka.me">please reach out</a>.</p>
+
+<hr />
+
+<p>The exam is divided into the following topics. Find up to date info <a href="https://learn.microsoft.com/en-us/certifications/azure-solutions-architect/">here</a></p>
+
+<hr />
+
+<h2 id="table-of-contents-">Table of Contents <!-- omit from toc --></h2>
+
+<ul>
+  <li><a href="#design-identity-governance-and-monitoring-solutions-2530">Design identity, governance, and monitoring solutions (25–30%)</a>
+    <ul>
+      <li><a href="#design-a-solution-for-logging-and-monitoring">Design a solution for logging and monitoring</a>
+        <ul>
+          <li><a href="#log-analytics-workspace">Log Analytics workspace</a></li>
+          <li><a href="#azure-monitor-agent-ama">Azure Monitor Agent (AMA)</a></li>
+        </ul>
+      </li>
+      <li><a href="#design-authentication-and-authorization-solutions">Design authentication and authorization solutions</a>
+        <ul>
+          <li><a href="#azure-policy-effect">Azure Policy Effect</a></li>
+          <li><a href="#azure-ad-object-and-rbac-roles">Azure AD object and RBAC roles</a></li>
+        </ul>
+      </li>
+      <li><a href="#design-governance">Design governance</a></li>
+      <li><a href="#design-identities-and-access-for-applications">Design identities and access for applications</a></li>
+    </ul>
+  </li>
+  <li><a href="#design-data-storage-solutions-2530">Design data storage solutions (25–30%)</a>
+    <ul>
+      <li><a href="#design-a-data-storage-solution-for-relational-data">Design a data storage solution for relational data</a>
+        <ul>
+          <li><a href="#general-purpose-v2-gpv2-storage-account">General Purpose v2 (GPv2) storage account</a></li>
+          <li><a href="#azure-sql-managed-instance">Azure SQL Managed Instance</a></li>
+          <li><a href="#azure-sql-database-hyperscale">Azure SQL Database Hyperscale</a></li>
+        </ul>
+      </li>
+      <li><a href="#design-data-integration">Design data integration</a>
+        <ul>
+          <li><a href="#azure-synapse-link">Azure Synapse Link</a></li>
+          <li><a href="#azure-data-lake-storage-gen2">Azure Data Lake Storage Gen2</a></li>
+          <li><a href="#azure-data-factory">Azure Data Factory</a></li>
+        </ul>
+      </li>
+      <li><a href="#recommend-a-data-storage-solution">Recommend a data storage solution</a></li>
+      <li><a href="#design-a-data-storage-solution-for-non-relational-data">Design a data storage solution for non-relational data</a>
+        <ul>
+          <li><a href="#dynamic-data-masking-ddm">Dynamic Data Masking (DDM)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#design-business-continuity-solutions-1015">Design business continuity solutions (10–15%)</a>
+    <ul>
+      <li><a href="#design-a-solution-for-backup-and-disaster-recovery">Design a solution for backup and disaster recovery</a>
+        <ul>
+          <li><a href="#azure-site-recovery">Azure Site Recovery</a></li>
+        </ul>
+      </li>
+      <li><a href="#design-for-high-availability">Design for high availability</a>
+        <ul>
+          <li><a href="#azure-traffic-manager">Azure Traffic Manager</a></li>
+          <li><a href="#azure-front-door">Azure Front Door</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#design-infrastructure-solutions-2530">Design infrastructure solutions (25–30%)</a>
+    <ul>
+      <li><a href="#design-a-compute-solution">Design a compute solution</a>
+        <ul>
+          <li><a href="#azure-logic-apps">Azure Logic Apps</a></li>
+          <li><a href="#azure-functions">Azure Functions</a></li>
+        </ul>
+      </li>
+      <li><a href="#design-an-application-architecture">Design an application architecture</a>
+        <ul>
+          <li><a href="#authorization-workflow">Authorization workflow</a></li>
+        </ul>
+      </li>
+      <li><a href="#design-migrations">Design migrations</a></li>
+      <li><a href="#design-network-solutions">Design network solutions</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="design-identity-governance-and-monitoring-solutions-2530">Design identity, governance, and monitoring solutions (25–30%)</h2>
+
+<p><br /></p>
+
+<h3 id="design-a-solution-for-logging-and-monitoring">Design a solution for logging and monitoring</h3>
+<ul>
+  <li>Design a log routing solution</li>
+  <li>Recommend an appropriate level of logging</li>
+  <li>Recommend monitoring tools for a solution</li>
+</ul>
+
+<p>You need to analyze the network traffic to identify whether packets are being allowed or denied to the virtual machines. – Use Azure Network Watcher IP Flow Verify, which allows you to detect traffic filtering issues at a VM level.</p>
+
+<p>Azure Monitor Log Tables to query</p>
+<ul>
+  <li>Windows Event Logs – Event ,</li>
+  <li>Linux – Syslog</li>
+</ul>
+
+<p>Activity logs are kept for 90 days. You can query for any range of dates, as long as the starting date isn’t more than 90 days in the past. – Create log for all ARM deployments in RG/subscription</p>
+
+<p>Use the Azure Monitor agent if you need to: Collect guest logs and metrics from any machine in Azure, in other clouds, or on-premises.
+Use the Dependency agent if you need to: Use the Map feature VM insights or the Service Map solution.</p>
+
+<p>Design an architecture to capture the creation of users and the assignment of roles , data stored in Cosmos DB – Azure AD Audit Log -&gt; Azure Event Hubs (you export AD logs to an event hub where you can even selectively pick)-&gt; Azure Functions (serverless function to read events from the hub and store in database) -&gt;Cosmos DB</p>
+
+<p>Resources to create to monitor all warning events in the System logs of 300 virtual machines.- Azure Log Analytics Workspace &amp; Storage Account, Configuration on VMs -&gt; AZ Monitor Agent</p>
+
+<h4 id="log-analytics-workspace">Log Analytics workspace</h4>
+<p>Is a unique environment for log data from Azure Monitor and other Azure services, such as Microsoft Sentinel and Microsoft Defender for Cloud. Each workspace has its own data repository and configuration but might combine data from multiple services.</p>
+
+<h4 id="azure-monitor-agent-ama">Azure Monitor Agent (AMA)</h4>
+<p>Collects monitoring data from the guest operating system of Azure and hybrid virtual machines and delivers it to Azure Monitor for use by features, insights, and other services, such as Microsoft Sentinel and Microsoft Defender for Cloud.</p>
+
+<p>A single diagnostic setting can define no more than one of each of the destinations. If you want to send data to more than one of a particular destination type (for example, two different Log Analytics workspaces), then create multiple settings.</p>
+
+<p>Each resource can have up to 5 diagnostic settings.</p>
+
+<p>Note: This diagnostic telemetry can be streamed to one of the following Azure resources for analysis.</p>
+<ul>
+  <li>Log Analytics workspace</li>
+  <li>Azure Event Hubs</li>
+  <li>Azure Storage</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="design-authentication-and-authorization-solutions">Design authentication and authorization solutions</h3>
+<ul>
+  <li>Recommend a solution for securing resources with role-based access control</li>
+  <li>Recommend an identity management solution</li>
+  <li>Recommend a solution for securing identities</li>
+</ul>
+
+<p>Users to only connect without authentication prompt – Azure AD App Registration since app will use Azure AD authentication 
+Users to only access from company owned computers – Conditional access policy</p>
+
+<p>Azure App proxy for connecting without vpn and Enterprise App for SSO
+Shared Access Signatures (SAS) allows for limited-time fine grained access control to resources. So you can generate URL, specify duration (for month of April) and disseminate URL to 10 team members. On May 1, the SAS token is automatically invalidated, denying team members continued access.</p>
+
+<p>Azure API Management - “Requests to the logic apps from the developers must be limited to lower rates than the requests from the users at Contoso.” - This requirement can be achieved using the ‘Limit call rate by key’ feature of the API management., also supports OAuth2 authentication.</p>
+
+<p>Management groups can’t span AAD tenant, so you need 2 management groups. Blueprints definition can be saved within management group which, in turn, means you need 2 blueprint definitions. Blueprint assignments are at subscription level, therefore you need 4.</p>
+
+<h5 id="azure-policy-effect">Azure Policy Effect</h5>
+<p>Modify is used to add, update, or remove properties or tags on a subscription or resource during creation or update. A common example is updating tags on resources such as costCenter. Existing non-compliant resources can be remediated with a remediation task. A single Modify rule can have any number of operations. Policy assignments with effect set as Modify require a managed identity to do remediation.</p>
+
+<p>The following effects are deprecated: EnforceOPAConstraint EnforceRegoPolicy Append is used to add additional fields to the requested resource during creation or update.</p>
+
+<h5 id="azure-ad-object-and-rbac-roles">Azure AD object and RBAC roles</h5>
+<p>Is a managed identity with contributor role	
+System-assigned managed identities provide a way for <strong>Azure Functions</strong> to authenticate to other Azure services, such as Activity Logs, without the need for storing or managing secrets. This approach minimizes administrative effort because the identity is tied directly to the Azure Functions service and is automatically managed by Azure.</p>
+
+<p>The User Administrator role provides permissions to manage user accounts, including creating new users. The Password Administrator and Helpdesk Administrator roles provide permissions to reset user passwords.</p>
+
+<p><br /></p>
+
+<h3 id="design-governance">Design governance</h3>
+<ul>
+  <li>Recommend an organizational and hierarchical structure for Azure resources</li>
+  <li>Recommend a solution for enforcing and auditing compliance</li>
+</ul>
+
+<p>Azure Active Directory (Azure AD) <strong>access reviews</strong> enable organizations to efficiently manage group memberships, access to enterprise applications, and role assignments. User’s access can be reviewed on a regular basis to make sure only the right people have continued access.</p>
+
+<p>Use Azure Policy and tags to generate compliance reports for the subscription and group them by department.</p>
+
+<p>You apply tags to your Azure resources, resource groups, and subscriptions to logically organize them into a taxonomy. Each tag consists of a name and a value pair. By creating a policy, you avoid the scenario of resources being deployed to your subscription that don’t have the expected tags for your organization. 
+Instead of manually applying tags or searching for resources that aren’t compliant, you create a policy that automatically applies the needed tags during deployment.</p>
+
+<p><br /></p>
+
+<h3 id="design-identities-and-access-for-applications">Design identities and access for applications</h3>
+<ul>
+  <li>Recommend solutions to allow applications to access Azure resources</li>
+  <li>Recommend a solution that securely stores passwords and secrets</li>
+  <li>Recommend a solution for integrating applications into Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra</li>
+  <li>Recommend a user consent solution for applications</li>
+</ul>
+
+<hr />
+<h2 id="design-data-storage-solutions-2530">Design data storage solutions (25–30%)</h2>
+
+<p><br /></p>
+
+<h3 id="design-a-data-storage-solution-for-relational-data">Design a data storage solution for relational data</h3>
+<ul>
+  <li>Recommend database service tier sizing</li>
+  <li>Recommend a solution for database scalability</li>
+  <li>Recommend a solution for encrypting data at rest, data in transmission, and data in use</li>
+</ul>
+
+<h5 id="general-purpose-v2-gpv2-storage-account">General Purpose v2 (GPv2) storage account</h5>
+<p>Can store blobs, files, queues, and tables, making it a versatile option for a wide range of applications. 
+It supports customer-managed keys for encryption, allowing you to maintain control over the encryption keys. 
+To encrypt each user’s data with a separate key, you can use Azure Blob Storage Service Encryption with customer-managed keys, storing each user’s data in separate containers, and then configuring separate encryption keys for each container.</p>
+
+<h5 id="azure-sql-managed-instance">Azure SQL Managed Instance</h5>
+<p>Is a fully managed SQL Server instance hosted in Azure that supports most of the SQL Server features. It provides easier migration from on-premises SQL Server with minimal database changes, while also minimizing management overhead. 
+It allows existing SQL Server customers to lift and shift their on-premises applications to the cloud with minimal application and database changes. 
+At the same time, SQL Managed Instance preserves all PaaS capabilities (<em>automatic patching and version updates, automated backups, high availability)</em> that drastically reduce management overhead and TCO. It supports features like cross-database queries and transactions</p>
+
+<p><strong>Elastic pools</strong> in Azure SQL Database are designed to handle multiple databases with varying usage patterns within a shared resource pool. Azure SQL Database provides an SLA of <strong>99.99%</strong> uptime, ensuring high availability for your databases.</p>
+
+<h5 id="azure-sql-database-hyperscale">Azure SQL Database Hyperscale</h5>
+<ul>
+  <li>Support scaling up and down: The Hyperscale service tier supports scaling compute resources up and down based on your workload requirements.</li>
+  <li>Support geo-redundant backups: It offers automatic backups with the ability to enable geo-redundant backups to ensure data durability in case of regional disasters.</li>
+  <li>Support a database of up to 75 TB: Hyperscale supports databases up to 100 TB in size, which meets the requirement of 75 TB.</li>
+  <li>Be optimized for online transaction processing (OLTP): Azure SQL Database Hyperscale is designed to handle OLTP workloads with high performance and low latency.</li>
+</ul>
+
+<p>SQL Database options that support Geo Redundancy, vCore model, General Purpose (at additional cost), Business Critical, DTU model, Premium. SQL MI does not support geo-redundancy at all.</p>
+
+<p><br /></p>
+
+<h3 id="design-data-integration">Design data integration</h3>
+<ul>
+  <li>Recommend a solution for data integration</li>
+  <li>Recommend a solution for data analysis</li>
+</ul>
+
+<h5 id="azure-synapse-link">Azure Synapse Link</h5>
+<p>For Azure Cosmos DB, it creates a tight integration between Azure Cosmos DB and Azure Synapse Analytics. It enables customers to run near real-time analytics over their operational data with full performance isolation from their transactional workloads and without an ETL pipeline</p>
+
+<p><em>Case study. Service to store and query the data. 50000 IoT devices</em></p>
+
+<ol>
+  <li>Azure Table Storage: You can’t query data. Storage limited to 20000/s.</li>
+  <li>Azure Event Grid: You can’t store or query data.</li>
+  <li>Azure Cosmos DB SQL API: You can store and query data.</li>
+  <li>Azure Time Series Insights: You can store and query data.</li>
+</ol>
+
+<p><strong>Azure Cosmos DB SQL API</strong>  - With Cosmos DB’s novel multi-region (multi-master) writes replication protocol, every region supports both writes and reads. The multi-region writes capability also enables: Unlimited elastic write and read scalability. 99.999% read and write availability all around the world. Guaranteed reads and writes served in less than 10 milliseconds at the 99th percentile.</p>
+
+<h5 id="azure-data-lake-storage-gen2">Azure Data Lake Storage Gen2</h5>
+<p>Is designed for big data analytics workloads and supports organizing data in directories by date and time, as well as hierarchical namespace. It also allows stored data to be queried directly and is well-integrated with Azure Event Hubs. Supports HDFS protocol.</p>
+
+<h5 id="azure-data-factory">Azure Data Factory</h5>
+<p>Is a cloud-based data integration service that allows you to create, schedule, and manage data pipelines.</p>
+
+<p><strong>Dedicated SQL pool</strong>: It’s best for big and complex tasks.</p>
+
+<p><strong>Serverless Apache Spark pool</strong>: It’s best for big data analysis and machine learning tasks using Spark SQL and Spark DataFrames.</p>
+
+<p><strong>Serverless SQL pool</strong>: This is a service that automatically adjusts the amount of resources you use based on your needs. You only pay for what you use. It’s best for small to medium-sized tasks and tasks that change often.</p>
+
+<p><br /></p>
+
+<h3 id="recommend-a-data-storage-solution">Recommend a data storage solution</h3>
+<ul>
+  <li>Recommend a solution for storing relational data</li>
+  <li>Recommend a solution for storing semi-structured data</li>
+  <li>Recommend a solution for storing non-relational data</li>
+</ul>
+
+<p>BlockBlobStorage - is a premium storage account type for block blobs and append blobs. Recommended for scenarios with high transactions rates, or scenarios that use smaller objects or require consistently low storage latency.</p>
+
+<p>Blob -The Archive tier is an offline tier for storing blob data that is rarely accessed. The Archive tier offers the lowest storage costs, but higher data retrieval costs and latency compared to the online tiers (Hot and Cool). Data must remain in the Archive tier for at least 180 days or be subject to an early deletion charge.</p>
+
+<p>Data stored in a premium block blob storage account cannot be tiered to hot, cool, or archive using Set Blob Tier or using Azure Blob Storage lifecycle management. Also, it can be used in conjunction with Azure Web Application Firewall (WAF) on Azure Front Door.</p>
+
+<p>While a blob is in the Archive tier, it can’t be read or modified. To read or download a blob in the Archive tier, you must first rehydrate it to an online tier, either Hot or Cool. Data in the Archive tier can take up to 15 hours to rehydrate, depending on the priority you specify for the rehydration operation.</p>
+
+<p>Azure File shares requires Premium accounts. Only Storage1 and storage4 are premium.</p>
+
+<p>TO WRITE INTO STORAGE - MUST BE IN SAME REGION
+TO WRITE IN LOG ANALYTICS SPACE - CAN BE IN DIFFERENT REGION</p>
+
+<p>The Data Migration Assistant (DMA) helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database.</p>
+
+<p><br /></p>
+
+<h3 id="design-a-data-storage-solution-for-non-relational-data">Design a data storage solution for non-relational data</h3>
+<ul>
+  <li>Recommend access control solutions to data storage</li>
+  <li>Recommend a data storage solution to balance features, performance, and cost</li>
+  <li>Design a data solution for protection and durability</li>
+</ul>
+
+<h5 id="dynamic-data-masking-ddm">Dynamic Data Masking (DDM)</h5>
+<p>Is a feature in Azure SQL Database that helps you protect sensitive data by obfuscating it from non-privileged users. DDM allows you to define masking rules on specific columns, so that the data in those columns is automatically replaced with a masked value when queried by users without the appropriate permissions.</p>
+
+<p>This ensures that only privileged users can view the actual Personally Identifiable Information (PII), while other users will see the masked data.</p>
+
+<p>Encryption algorithm and key length  - RSA 3072 provides a higher level of encryption strength compared to RSA 2048. While RSA 4096 offers even stronger encryption, it is not supported by Azure SQL Database and Azure SQL Managed Instance for TDE protectors.</p>
+
+<p>Apache Cassandra uses Cassandra Query Language (CQL). NoSQL stores data in document format - MongoDB stores data in a document structure (BSON format)</p>
+
+<hr />
+<h2 id="design-business-continuity-solutions-1015">Design business continuity solutions (10–15%)</h2>
+
+<p><br /></p>
+
+<h3 id="design-a-solution-for-backup-and-disaster-recovery">Design a solution for backup and disaster recovery</h3>
+<ul>
+  <li>Recommend a recovery solution for Azure, hybrid, and on-premises workloads that meets recovery objectives (Recovery Time Objective [RTO], Recovery Level Objective [RLO], Recovery Point Objective [RPO])</li>
+  <li>Understand the recovery solutions for containers</li>
+  <li>Recommend a backup and recovery solution for compute</li>
+  <li>Recommend a backup and recovery solution for databases</li>
+  <li>Recommend a backup and recovery solution for unstructured data</li>
+</ul>
+
+<h5 id="azure-site-recovery">Azure Site Recovery</h5>
+<p>Is a disaster recovery service that allows you to protect your Azure virtual machines by orchestrating replication, failover, and recovery. It helps you meet the RTO and RPO requirements, automates recovery, and provides protection against regional outages. While it may not be the lowest cost solution, it meets all the other requirements, including automated recovery and support for the specified RTO and RPO.</p>
+
+<p><strong>Azure MySql server</strong> - flexible only has zonal redundancy by default. YOu must enable geo-redundancy by yourself if you plan to use it for pair-region disaster recovery</p>
+
+<p><strong>General Purpose v2 (tiered storage)</strong> provides access to the latest Azure storage features, including Cool and Archive storage, with pricing optimized for the lowest GB storage prices. These accounts provide access to Block Blobs, Page Blobs, Files, and Queues. Recommended for most scenarios using Azure Storage.</p>
+
+<p>The contents of your key vault are replicated within the region and to a secondary region at least 150 miles away. During failover, your key vault is in read-only mode.</p>
+
+<p>Zone-redundant configuration is not available in SQL Managed Instance. To prevent Data Loss, Premium/Business Critical is required</p>
+
+<p><strong>Always Encrypted</strong> is a feature designed to protect sensitive data stored in specific database columns from access (for example, credit card numbers, national identification numbers, or data on a need to know basis). This includes database administrators or other privileged users who are authorized to access the database to perform management tasks, but have no business need to access the particular data in the encrypted columns</p>
+
+<p><br /></p>
+
+<h3 id="design-for-high-availability">Design for high availability</h3>
+<ul>
+  <li>Identify the availability requirements of Azure resources</li>
+  <li>Recommend a high availability solution for compute</li>
+  <li>Recommend a high availability solution for non-relational data storage</li>
+  <li>Recommend a high availability solution for relational data storage</li>
+</ul>
+
+<h5 id="azure-traffic-manager">Azure Traffic Manager</h5>
+<p>Is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness.</p>
+
+<h5 id="azure-front-door">Azure Front Door</h5>
+<p>Is an application delivery network that provides global load balancing and site acceleration service for web applications. It offers Layer 7 capabilities for your application like SSL offload, path-based routing, fast failover, caching, etc. to improve performance and high-availability of your applications.</p>
+
+<p><strong>Azure Application Gateway</strong> will balance the traffic between VMs deployed in the same region. Create an Azure Traffic Manager profile instead (fits global requirements)</p>
+
+<p><strong>Premium Azure file shares</strong> only support LRS and ZRS. Premium file shares are backed by solid-state drives (SSDs) and provide consistent high performance and low latency, within single-digit milliseconds for most IO operations, for IO-intensive workloads. Hot file share is general use and is backed by HDD.</p>
+
+<p>For enhanced virtual machine (VM) security and compliance, virtual disks in Azure can be encrypted. Disks are encrypted by using cryptographic keys that are secured in an Azure Key Vault. You control these cryptographic keys and can audit their use.</p>
+
+<p><strong>Data Box</strong> is a rugged device that allows organizations to have 100 TB of capacity on which to copy their data and then send it to be transferred to Azure. It is an extremely powerful solution that helps customers get their data to the Azure public cloud in a cost-effective, secure, and efficient manner with powerful Azure and machine learning at play.</p>
+
+<p>Automate data movement using Azure Data Factory, then load data into Azure Data Lake Storage, transform and clean it using Azure Databricks, and make it available for analytics using Azure Synapse Analytics. Modernize your data warehouse in the cloud.</p>
+
+<p>If your requirements include encrypting all of the above and end-to-end encryption, use <strong>Azure Disk Encryption</strong>.</p>
+
+<p>If your requirements include encrypting only data at rest with customer-managed key, then use Server-side encryption with customer-managed keys. You <strong>cannot</strong> encrypt a disk with both Azure Disk Encryption and Storage server-side encryption with customer managed keys</p>
+
+<p>A self-hosted integration runtime can run copy activities between a cloud data store and a data store in a private network. It also can dispatch transform activities against compute resources in an on-premises network or an Azure virtual network. The installation of a self-hosted integration runtime needs an on-premises machine or a virtual machine inside a private network.</p>
+
+<hr />
+
+<h2 id="design-infrastructure-solutions-2530">Design infrastructure solutions (25–30%)</h2>
+
+<p><br /></p>
+
+<h3 id="design-a-compute-solution">Design a compute solution</h3>
+<ul>
+  <li>Recommend a virtual machine–based compute solution</li>
+  <li>Recommend an appropriately sized compute solution based on workload requirements</li>
+  <li>Recommend a container-based compute solution</li>
+  <li>Recommend a serverless-based compute solution</li>
+</ul>
+
+<h5 id="azure-logic-apps">Azure Logic Apps</h5>
+<p>Is a serverless solution that enables you to create and run workflows that integrate with various services and systems. You can use Azure Logic Apps to create a workflow that runs the PowerShell script once an hour using a time-based trigger, sends an email notification to the operations manager for approval, and processes the email response.</p>
+
+<h5 id="azure-functions">Azure Functions</h5>
+<p>Is a serverless compute service that allows you to run event-driven code without having to manage infrastructure explicitly. You can use Azure Functions to host the PowerShell script, which can be triggered by the Logic App when the operations manager approves the deletion.</p>
+
+<p><br /></p>
+
+<h3 id="design-an-application-architecture">Design an application architecture</h3>
+<ul>
+  <li>Recommend a caching solution for applications</li>
+  <li>Recommend a messaging architecture</li>
+  <li>Recommend an event-driven architecture</li>
+  <li>Recommend an automated deployment solution for your applications</li>
+  <li>Recommend an application configuration management solution</li>
+  <li>Recommend a solution for API integration</li>
+</ul>
+
+<h5 id="authorization-workflow">Authorization workflow</h5>
+<p>A user or application acquires a token from Azure AD with permissions that grant access to the backend-app. The token is added in the Authorization header of API requests to API Management.</p>
+
+<p><strong>API Management</strong> validates the token by using the validate-jwt policy. If a request doesn’t have a valid token, API Management blocks it. If a request is accompanied by a valid token, the gateway can forward the request to the API.</p>
+
+<p><br /></p>
+
+<h3 id="design-migrations">Design migrations</h3>
+<ul>
+  <li>Evaluate a migration solution that leverages the Cloud Adoption Framework for Azure</li>
+  <li>Assess and interpret on-premises servers, data, and applications for migration</li>
+  <li>Recommend a solution for migrating applications and virtual machines</li>
+  <li>Recommend a solution for migrating databases</li>
+  <li>Recommend a solution for migrating unstructured data</li>
+</ul>
+
+<p>You can use Azure AD Domain Services and sync identities needed from Azure AD to Azure AD DS to use legacy protocols like LDAP. Kerberos and NTLM</p>
+
+<p><br /></p>
+
+<h3 id="design-network-solutions">Design network solutions</h3>
+<ul>
+  <li>Recommend a network architecture solution based on workload requirements</li>
+  <li>Recommend a connectivity solution that connects Azure resources to the internet</li>
+  <li>Recommend a connectivity solution that connects Azure resources to on-premises networks</li>
+  <li>Optimize network performance for applications</li>
+  <li>Recommend a solution to optimize network security</li>
+  <li>Recommend a load balancing and routing solution</li>
+</ul>
+
+<p>A basic Azure virtual WAN does not support express route. You have to upgrade to standard.</p>
+
+<p>Azure File Sync enables you to centralize your organization’s file shares in Azure Files while maintaining local access to the data. In this scenario, you can use Azure File Sync to synchronize the shared files on VM1 to an Azure file share.</p>
+
+<p>An on-premises data gateway allows you to securely access on-premises data and resources from Azure Logic Apps. In this scenario, deploying an on-premises data gateway on Server1 or another server in the datacenter will enable LogicApp1 to access the SQL Server 2016 database on Server1</p>
+
+<p>A connection gateway resource will communicate with the on-premises data gateway to provide LogicApp1 with the ability to access the SQL Server 2016 database on Server1 securely.</p>
+
+<p>Azure WAF v2 has latest OWASP rules (3.2) in preview and requires App Gateway with required /24 subnet to deploy.</p>
+
+<p>Azure API Management Premium tier supports virtual network integration, which allows you to restrict ingress access to the microservices to a single private IP address within the virtual network. This tier also supports mutual TLS authentication, rate-limiting policies, and provides a solution for exposing the microservices to the consumer apps while minimizing costs.</p>
+
+<p><strong><em>THE END, Thanks for getting this far !</em></strong></p>
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:brian@waithaka.me"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/brianwaithaka"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/brianwaithaka"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+  <br>
+  <small class="text-muted mb-2">
+    Developed by <strong>Brian Waithaka</strong>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

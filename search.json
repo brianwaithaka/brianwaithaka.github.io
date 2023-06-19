@@ -1,19 +1,19 @@
 [
   
     {
-      "title"    : "Second Note",
+      "title"    : "Git Version Control",
       "category" : "",
-      "tags"     : "Test, Notes",
-      "url"      : "/mynotes/secondnote",
-      "date"     : "2023-06-13 00:00:00 +0000"
+      "tags"     : "Git, Cheat Sheet",
+      "url"      : "/mynotes/git",
+      "date"     : "2023-06-17 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "First Note",
+      "title"    : "Azure Solutions Architect Expert",
       "category" : "",
-      "tags"     : "Test, Notes",
-      "url"      : "/mynotes/firstnote",
-      "date"     : "2023-06-13 00:00:00 +0000"
+      "tags"     : "Microsoft, Azure, Cheat Sheet",
+      "url"      : "/mynotes/azure-solutions-architect-expert",
+      "date"     : "2023-06-15 00:00:00 +0000"
     } 
   
 ]
