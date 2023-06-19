@@ -8,6 +8,7 @@ on:
 
 jobs:
   build_site:
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - name: Check recent updates from repository
@@ -37,7 +38,6 @@ jobs:
   deploy_site:
     environment:
       name: staging
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build_site
     permissions:
