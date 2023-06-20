@@ -34,6 +34,11 @@ link-after,[data-theme="light"]  .nav-link::after, [data-theme="light"] .navbar-
     background: #ffffff ;
 }
 
+// Navbrand link colors in light mode
+.navbar-brand h5 {
+    padding: 0px 0px 15px 0px ;
+    margin: 0px; 
+}
 
 #theme-toggler {
     @include themed(
