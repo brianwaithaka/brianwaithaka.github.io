@@ -475,6 +475,8 @@ link-after, [data-theme="light"] .nav-link::after, [data-theme="light"] .navbar-
 
 link-after, [data-theme="dark"] .nav-link::after, [data-theme="dark"] .navbar-brand::after, [data-theme="dark"] .nav-item.active::after { content: ""; background: #ffffff; }
 
+.navbar-brand h5 { padding: 0px 0px 15px 0px; margin: 0px; }
+
 #theme-toggler { width: 35px; height: 35px; margin: auto; margin-left: 0px; }
 [data-theme="light"] #theme-toggler { content: url("/assets/moon.svg"); }
 [data-theme="dark"] #theme-toggler { content: url("/assets/sun.svg"); }
