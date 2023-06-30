@@ -81,12 +81,16 @@
 
   <br>Tags: 
     
-    <a class="text-decoration-none no-underline" href="/blog/tags#git">
+    <a class="text-decoration-none no-underline" href="/notes/tags#git">
       <span class="tag badge badge-pill text-primary border border-primary">Git</span>
     </a>
     
-    <a class="text-decoration-none no-underline" href="/blog/tags#cheat-sheet">
+    <a class="text-decoration-none no-underline" href="/notes/tags#cheat-sheet">
       <span class="tag badge badge-pill text-primary border border-primary">Cheat Sheet</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/notes/tags#commands">
+      <span class="tag badge badge-pill text-primary border border-primary">Commands</span>
     </a>
     </p>
 
@@ -106,7 +110,10 @@ Git remote </a><a class="list-group-item list-group-item-action" href="#git-fetc
 Git fetch</a><a class="list-group-item list-group-item-action" href="#git-config">
 Git config</a><a class="list-group-item list-group-item-action" href="#git-rebase">
 Git rebase</a><a class="list-group-item list-group-item-action" href="#git-commit">
-Git commit</a><a class="list-group-item list-group-item-action" href="#others">
+Git commit</a><a class="list-group-item list-group-item-action" href="#git-reset">
+Git reset</a><a class="list-group-item list-group-item-action" href="#git-merge">
+Git merge</a><a class="list-group-item list-group-item-action" href="#">
+</a><a class="list-group-item list-group-item-action" href="#others">
 Others</a>
 
 </div>
@@ -127,7 +134,7 @@ Others</a>
 
 <p>If working on a new branch created locally, you must first set upstream</p>
 
-<pre><code class="language-git">git push –-set-upstream origin &lt;new_or_old_branch&gt;
+<pre><code class="language-git">git push origin &lt;new_or_old_remote_branch&gt; –-set-upstream 
 </code></pre>
 
 <p>Update new branch name in remote repository, And then set upstream connection</p>
@@ -185,6 +192,10 @@ If there are merge conflicts, they must be resolved by passing various arguments
 <pre><code class="language-git">git remote -v
 </code></pre>
 
+<p>Set remote repository url</p>
+<pre><code class="language-git">git remote add origin https://github.com/&lt;username&gt;/&lt;repository&gt;.git
+</code></pre>
+
 <p>Change remote repository url</p>
 <pre><code class="language-git">git remote set-url origin https://github.com/&lt;username&gt;/&lt;repository&gt;.git
 </code></pre>
@@ -227,8 +238,15 @@ git commit --amend --date="Mon Jun 12 12:05:24 2023 +0200"
 </code></pre>
 <h4 id="git-reset">Git reset</h4>
 <p>If you messed up and need to hard revert to previous point in history, run</p>
-<pre><code class="language-git">git reflog          #To get the head offset value
+<pre><code class="language-git">git reflog                          #To get the head offset value
 git reset --hard HEAD@{5} 
+</code></pre>
+
+<h4 id="git-merge">Git merge</h4>
+<p>When you have pushed changes to remote repository and need to update local branch with origin/main ‘s changes.</p>
+
+<pre><code class="language-git">git checkout &lt;branch&gt;
+git merge origin/main
 </code></pre>
 
 <h4 id="others">Others</h4>

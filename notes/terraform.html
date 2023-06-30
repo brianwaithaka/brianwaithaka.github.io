@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Terraform">
+  <meta property="og:description" content="My understanding of Terraform Infrastructure as Code (IAC)Platform">
+  <meta property="og:image" content="">
+
+  <title>Terraform</title>
+  <meta name="description" content="My understanding of Terraform Infrastructure as Code (IAC)Platform">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+  <nav class="px-sm-0 px-md-5 pt-3 "><nav class="navbar navbar-expand-md navbar-themed mt-0 pb-5 mx-0 d-flex">
+
+  <a class="navbar-brand" href="/"><h5>Waithaka's Notes</h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-lg fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/"></a>
+
+      <a class="nav-item nav-link " href="https://www.waithaka.me">Home</a>
+
+      <a class="nav-item nav-link " href="https://blog.waithaka.me">Blog</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav></nav>
+  <main class="container mt-0">
+    
+    <div class="col-lg-12 mx-auto pt-0 mt-0 markdown-body">
+  <h1><b>Terraform</b></h1>
+
+<p class="post-metadata text-muted">
+  21 June 2023 -  
+  <b>4 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/notes/tags#terraform">
+      <span class="tag badge badge-pill text-primary border border-primary">Terraform</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/notes/tags#cheat-sheet">
+      <span class="tag badge badge-pill text-primary border border-primary">Cheat Sheet</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/notes/tags#commands">
+      <span class="tag badge badge-pill text-primary border border-primary">Commands</span>
+    </a>
+    </p>
+
+<h2 id="introduction-">Introduction <!-- omit from toc --></h2>
+<p>Hello. This is my terraform cheat sheet for me to easily refer to.</p>
+
+<p>Over time I will append links to official documentation. If something does not look right, <a href="mailto:brian@waithaka.me">please reach out</a>.</p>
+
+<hr />
+
+<div class="list-group my-3"><a class="list-group-item active disabled text-white">Table of Contents</a><a class="list-group-item list-group-item-action" href="#terraform-init">terraform init</a><a class="list-group-item list-group-item-action" href="#terraform-plan">
+terraform plan</a><a class="list-group-item list-group-item-action" href="#terraform-apply">
+terraform apply </a><a class="list-group-item list-group-item-action" href="#terraform-destroy">
+terraform destroy</a><a class="list-group-item list-group-item-action" href="#terraform-fmt">
+terraform fmt</a><a class="list-group-item list-group-item-action" href="#terraform-validate">
+terraform validate</a><a class="list-group-item list-group-item-action" href="#terraform-import">
+terraform import </a><a class="list-group-item list-group-item-action" href="#terraform-output">
+terraform output</a><a class="list-group-item list-group-item-action" href="#terraform-refresh">
+terraform refresh</a><a class="list-group-item list-group-item-action" href="#terraform-state">
+terraform state</a>
+
+</div>
+
+<div class="list-group my-3"><a class="list-group-item active disabled text-white">Notes Section</a><a class="list-group-item list-group-item-action" href="#notes">Notes</a><a class="list-group-item list-group-item-action" href="#sections-of-a-tf-terraform-file">
+Sections of a .tf terraform file </a><a class="list-group-item list-group-item-action" href="#types-of-terraform-files">
+Types of terraform files </a><a class="list-group-item list-group-item-action" href="#credits">
+Credits</a>
+
+</div>
+
+<h4 id="terraform-init">terraform init</h4>
+<p>Initializes terraform by downloading required plugins defined in .tf file</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">init</span>
+</code></pre></div></div>
+
+<p>Initializes terraform and skips downloading required plug ins</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">init</span> <span class="err">-</span><span class="nx">get</span><span class="err">-</span><span class="nx">plugins</span><span class="err">=</span><span class="kc">false</span>
+</code></pre></div></div>
+
+<h4 id="terraform-plan">terraform plan</h4>
+
+<p>For a fresh start, download the files as a zip and</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">plan</span>
+</code></pre></div></div>
+
+<h4 id="terraform-apply">terraform apply</h4>
+
+<p>Creates an execution plan through which you can preview infrastructure changes. Compares it to the prior state</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">apply</span> <span class="err">-</span><span class="nx">auto</span><span class="err">-</span><span class="nx">approve</span>
+</code></pre></div></div>
+
+<h4 id="terraform-destroy">terraform destroy</h4>
+
+<p>Tear down all managed resources and infrastructure</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">destroy</span>
+</code></pre></div></div>
+<p>You can also run apply command but with -destroy flag,</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">apply</span> <span class="err">-</span><span class="nx">destroy</span>
+</code></pre></div></div>
+
+<h4 id="terraform-fmt">terraform fmt</h4>
+<p>Formats the code in all .tf files as per HCL standards</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">fmt</span>
+</code></pre></div></div>
+
+<h4 id="terraform-validate">terraform validate</h4>
+<p>Validates code in all .tf files in terms of syntax/correctness</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">validate</span>
+</code></pre></div></div>
+
+<h4 id="terraform-import">terraform import</h4>
+<p>Used to add existing resources to the state file for management by terraform. Avoid usage.</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">import</span> <span class="err">&lt;</span><span class="nx">resource_type</span><span class="err">&gt;.&lt;</span><span class="nx">resource_name</span><span class="err">&gt;</span> <span class="err">&lt;</span><span class="nx">resource_id</span><span class="err">&gt;</span>
+</code></pre></div></div>
+
+<h4 id="terraform-output">terraform output</h4>
+<p>Lists all outputs from the session. Add -json flag for JSON format</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">output</span> <span class="err">&amp;&amp;</span> <span class="nx">terraform</span> <span class="nx">output</span> <span class="err">-</span><span class="nx">json</span>
+</code></pre></div></div>
+
+<h4 id="terraform-refresh">terraform refresh</h4>
+<p>Reads current settings from managed resources and updates Terraform state file</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">refresh</span>
+
+<span class="c1">#Carries out the same action as below code</span>
+<span class="nx">terraform</span> <span class="nx">apply</span> <span class="err">-</span><span class="nx">refresh</span><span class="err">-</span><span class="nx">only</span> <span class="err">-</span><span class="nx">auto</span><span class="err">-</span><span class="nx">approve</span>
+</code></pre></div></div>
+
+<h4 id="terraform-state">terraform state</h4>
+<p>Lists out all the resources currently tracked by the state file</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">state</span> <span class="nx">list</span>
+</code></pre></div></div>
+
+<p>Allows you to view the attributes of a single resource in the state file</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">state</span> <span class="nx">show</span> <span class="err">&lt;</span><span class="nx">resource</span><span class="err">&gt;</span>
+</code></pre></div></div>
+
+<p>Stops tracking a resource present in the state file</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">state</span> <span class="nx">rm</span>  <span class="nx">aws_instance</span><span class="err">.</span><span class="nx">myinstance</span>
+</code></pre></div></div>
+
+<h4 id="other-commands">other commands</h4>
+<p>Check current version and update</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="nx">version</span> <span class="err">&amp;&amp;</span> <span class="nx">terraform</span> <span class="nx">get</span> <span class="err">-</span><span class="nx">update</span><span class="err">=</span><span class="kc">true</span> 
+</code></pre></div></div>
+
+<h4 id="notes">Notes</h4>
+<ul>
+  <li>If using terraform, do not alter resources outside of the platform e.g in portal or cli</li>
+  <li>It is a declarative style of language based on GO</li>
+  <li>When resources are created by Terraform through an ARM template, it cannot manage them</li>
+  <li>Terraform also automatically loads a number of variable definitions files if they are present:
+      - Files named exactly terraform.tfvars or terraform.tfvars.json.
+      - Any files with names ending in .auto.tfvars or .auto.tfvars.json.</li>
+</ul>
+
+<h4 id="sections-of-a-tf-terraform-file">Sections of a .tf terraform file</h4>
+
+<ol>
+  <li>
+    <p>Provider
+      - References the cloud service or other provider
+      - Has optional version info</p>
+  </li>
+  <li>
+    <p>Data
+    - References to exisitng resources</p>
+  </li>
+  <li>
+    <p>Resource
+      - Resources managed by terraform</p>
+  </li>
+</ol>
+
+<h4 id="types-of-terraform-files">Types of terraform files</h4>
+
+<ol>
+  <li>
+    <p>main.tf file</p>
+  </li>
+  <li>
+    <p>.tfvars file
+      - Allows for seperation of environment specific values 
+      - That way the main.tf can be version controlled and reused in various env
+      - Can be set as part of environment
+      - Specify default values, if none then user is prompted
+      - commandline flag takes precedence, then tf files , then env variable, then default variables.tf, then lastly prompt</p>
+  </li>
+  <li>
+    <p>output file 
+     - Consists of data and messages to be displayed after terraform apply command. Can also be queried using <a href="#terraform-output">terraform output</a></p>
+  </li>
+  <li>
+    <p>.tfstate file
+     - Is managed by terraform and consists of a snapshot of managed infrastructure and configuration.
+<br /></p>
+  </li>
+</ol>
+
+<h4 id="credits">Credits</h4>
+<p>Brilliant Youtube lesson by John Savill, <a href="https://youtu.be/JKVkblsp3cM">here</a>.
+Official Terraform Documentation, <a href="https://developer.hashicorp.com/terraform">here</a>.</p>
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:brian@waithaka.me"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/brianwaithaka"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/brianwaithaka"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+  <br>
+  <small class="text-muted mb-2">
+    Developed by <strong>Brian Waithaka</strong>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="brianwaithaka" data-description="Support me on Buy me a coffee!" data-message="" data-color="#D5D8DC" data-position="Right" data-x_margin="16" data-y_margin="16"></script></body>
+
+</html>
