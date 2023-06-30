@@ -19,8 +19,11 @@ terraform plan
 terraform apply 
 terraform destroy
 terraform fmt
+terraform validate
 terraform import 
+terraform output
 terraform refresh
+terraform state
   
 {% endcapture %}
 {% include elements/list.html title="Table of Contents" type="toc" %}
@@ -38,108 +41,138 @@ Credits
 
 
 #### terraform init
-Used when beginning work on a new project 
+Initializes terraform by downloading required plugins defined in .tf file 
 
 ```hcl
 terraform init
 ```
 
-#### terraform init
-
-For a fresh start, download the files as a zip and
-```git
-git init
+Initializes terraform and skips downloading required plug ins 
+```hcl
+terraform init -get-plugins=false
 ```
 
 
 #### terraform plan
 
 For a fresh start, download the files as a zip and
-```git
-git init
+```hcl
+terraform plan
 ```
 
 #### terraform apply
 
-
-For a fresh start, download the files as a zip and
-```git
+Creates an execution plan through which you can preview infrastructure changes. Compares it to the prior state
+```hcl
 terraform apply -auto-approve
 ```
 
 
 #### terraform destroy
 
-For a fresh start, download the files as a zip and
-```git
-git init
+Tear down all managed resources and infrastructure
+```hcl
+terraform destroy
 ```
-
-
+You can also run apply command but with -destroy flag, 
+```hcl
+terraform apply -destroy
+```
 
 #### terraform fmt
-
-For a fresh start, download the files as a zip and
-```git
-git init
+Formats the code in all .tf files as per HCL standards
+```hcl
+terraform fmt
 ```
 
-
+#### terraform validate
+Validates code in all .tf files in terms of syntax/correctness
+```hcl
+terraform validate
+```
 
 #### terraform import 
-
-For a fresh start, download the files as a zip and
-```git
-git init
+Used to add existing resources to the state file for management by terraform. Avoid usage.
+```hcl
+terraform import <resource_type>.<resource_name> <resource_id>
 ```
 
-
-
+#### terraform output 
+Lists all outputs from the session. Add -json flag for JSON format
+```hcl
+terraform output && terraform output -json
+```
 
 #### terraform refresh
+Reads current settings from managed resources and updates Terraform state file
+```hcl
+terraform refresh
 
-For a fresh start, download the files as a zip and
-```git
-git init
+#Carries out the same action as below code
+terraform apply -refresh-only -auto-approve
 ```
 
+#### terraform state
+Lists out all the resources currently tracked by the state file
+```hcl
+terraform state list
+```
+
+Allows you to view the attributes of a single resource in the state file 
+```hcl
+terraform state show <resource>
+```
+
+Stops tracking a resource present in the state file
+```hcl
+terraform state rm  aws_instance.myinstance
+```
+
+#### other commands
+Check current version and update
+```hcl
+terraform version && terraform get -update=true 
+```
 
 
 #### Notes
 - If using terraform, do not alter resources outside of the platform e.g in portal or cli 
 - It is a declarative style of language based on GO
 - When resources are created by Terraform through an ARM template, it cannot manage them
+- Terraform also automatically loads a number of variable definitions files if they are present:
+        - Files named exactly terraform.tfvars or terraform.tfvars.json.
+        - Any files with names ending in .auto.tfvars or .auto.tfvars.json.
 
 #### Sections of a .tf terraform file 
 
 1. Provider
-References the cloud service or other provider
-Has optional version info
+         - References the cloud service or other provider
+         - Has optional version info
 
-1.  Data
-References to exisitng resources 
+2.  Data
+        - References to exisitng resources 
 
-1. Resource
-Resources managed by terraform
+3. Resource
+         - Resources managed by terraform
 
 #### Types of terraform files 
 
 1. main.tf file 
 
-   <br>
-
-2. variable.tf file
+2. .tfvars file
          - Allows for seperation of environment specific values 
          - That way the main.tf can be version controlled and reused in various env
          - Can be set as part of environment
-         - Specify default values, if none user is prompted
-         - commandline flag takes precedence, then tf files file, then env variable, then defaultvariables.tf, then lastly prompt
+         - Specify default values, if none then user is prompted
+         - commandline flag takes precedence, then tf files , then env variable, then default variables.tf, then lastly prompt
 
 3. output file 
-        - Consists of data and messages to be applied post apply command
+        - Consists of data and messages to be displayed after terraform apply command. Can also be queried using [terraform output](#terraform-output)
 
 4. .tfstate file
+        - Is managed by terraform and consists of a snapshot of managed infrastructure and configuration.
 <br>
+
 
 #### Credits
 Brilliant Youtube lesson by John Savill, [here](https://youtu.be/JKVkblsp3cM).
