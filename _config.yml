@@ -3,11 +3,10 @@ title               : Waithaka's Notes
 description         : >-
                       Stepping out of my comfort zone
                       Creating notes to help myself and others
-                      Opinions are my own
 baseurl             : ""                    
-repository          : brianwaithaka/brianwaithaka.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
+repository          : brianwaithaka/brianwaithaka.github.io     
 remote_theme        : YoussefRaafatNasry/portfolYOU
-open_new_tab        : false                                # Opens external URLs in new tab (works for posts, projects and navbar only)
+open_new_tab        : false                               
 
 
 ### Plugins ###
@@ -67,18 +66,18 @@ disqus:
 
 ### Analytics ###
 analytics:
-  enabled: false                                        # Set true to enable analytics
+  enabled: true                                        # Set true to enable analytics
   google:
-    tracking_id: your-google-tracking-id
+    tracking_id: G-7HKDYY5BBQ
 
 
 ### Buy me a coffee ###
 # See https://www.buymeacoffee.com/
 buymeacoffee:
-  enabled: false
-  username: your_username
-  color: "#007bff"
-  message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
+  enabled: true
+  username: brianwaithaka
+  color: "#D5D8DC"
+  message:
   description: "Support me on Buy me a coffee!"
 
 
